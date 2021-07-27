@@ -69,17 +69,41 @@
                 <div class="col-lg-8">
                     <pre class="line-numbers">
                         <code class="language-javascript">
-                            //-- Call Hello World --//
-                            function HelloWorld(){
-                                alert("Hello World");
+                            //--Get the string from the page (controller function)--//
+                            function getValue(){
+                                document.getElementById("alert").classList.add("invisible");
+                                let userString = document.getElementById("userString").value;
+                                let rString = reverseString(userString);
+                                displayString(rString);
+                            }
+                            
+                            //--Reverse the string (logic function)--//
+                            function reverseString(userString){
+                                let revString = [];
+                                //--Reverse a string using a for loop--//
+                                for (let index = userString.length - 1; index >= 0; index--) {
+                                    revString += userString[index];
+                                }
+                                return revString;
+                            }
+                            
+                            //--Show the result to the user (display function)--//
+                            function displayString(revString){
+                                //--Write to page--//
+                                document.getElementById("msg").innerHTML = revString;
+                                //--Show the alert box--//
+                                document.getElementById("alert").classList.remove("invisible");
                             }
                         </code>
                     </pre>
                 </div>
                 <div class="col-lg-4">
-                    <p>The code is structured in one function.</p>
-                    <h5>Hello World</h5>
-                    <p>Hello World is a function that displays an alert with a message of "Hello World"</p>
+                    <h5>getValue()</h5>
+                    <p>This is a function that was created to collect the string information from the user via the input element contained within the form. It will display the final result after calling the other two functions to perform their actions.</p>
+                    <h5>reverseString()</h5>
+                    <p>This is a function that was designed to pinpoint the final index contained within a string Array by subtracting 1 from the Length property, because Arrays begin at 0. Using a For Loop, this function will continue to decrement the indicies within the locally-scoped Array until it has made a record of each value in reverse order.</p>
+                    <h5>displayString()</h5>
+                    <p>This final function was written to display the result to the user. Specifically, it incorporates the classList.remove property in order to get rid of the "invisible" class which is preventing the results section from being on display before the user has submitted their string.</p>
                 </div>
             </div>
         </div>
